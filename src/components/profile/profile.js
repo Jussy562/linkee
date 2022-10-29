@@ -5,16 +5,16 @@ function Profile() {
     
     <nav class="bg-none border-none px-2 sm:px-4 py-6 md:py-2.5 rounded dark:bg-gray-900">
     <div class=" flex items-center mb-6 ">
-        <div className='flex flex-row w-full bg-none justify-center items-center'>
+        <div className='flex flex-col md:flex-row w-full bg-none justify-center items-center'>
             <div className='flex justify-center w-full bg-white'>
                 <div className='flex flex-col justify-between items-center'>
                     <img src='/images/profile-pic.png' className=' mb-6 md:h-20 md:w-22 h-20 w-20 rounded-full' alt='Profile' />
                     <h3 className='text-3xl text-black-900 bold'>Le Beela</h3>
                 </div>
             </div>
-            <div className='hidden md:block w-auto bg-grey-500' id='navbar-default'>
+            <div className='hidden md:block items-end w-auto bg-grey-500' id='navbar-default'>
                 <div className='flex flex-col justify-start items-center w-full'>
-                    <img src='/images/share1.png' className=' h-20 sm:h-9' alt='Profile' />
+                    <img src='/images/share.png' className=' h-20 sm:h-9' alt='Profile' />
                     
                 </div>
             </div>
