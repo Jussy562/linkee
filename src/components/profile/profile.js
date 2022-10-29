@@ -9,7 +9,8 @@ function Profile() {
             <div className='flex flex-col   md:flex-row w-full md:w-96  items-center justify-center   bg-none'>
                 <div className='flex flex-col justify-between items-center'>
                     <img src='/images/profile-pic.png' className=' profile_image mb-6 md:h-20 md:w-22 h-20 w-20 rounded-full' alt='Profile' id='profile_image' />
-                    <h3 className='text-3xl text-gray-700 font-medium font-inter'>Le Beela</h3>
+                    <h3 className='text-3xl text-gray-700 font-medium font-inter mb-2' id='twitter'>Le Beela</h3>
+                    <h3 className='text-3xl text-gray-700 font-medium font-inter hidden'>Baribor Paago</h3>
                 </div>
                 
             </div>
@@ -17,7 +18,7 @@ function Profile() {
             <div className='hidden w-full md:w-auto  bg-none     md:block  ' id='navbar-default'>
                     <div className='w-full flex justify-center items-start'>
                         <div className='  border border-dashed border-gray-300 bg-none rounded-full w-12 h-12   flex  justify-center items-center w-full'>
-                            <img src='/images/share.png' className=' w-4 sm:h-9' alt='Profile' />
+                            <img src='/images/share.png' className=' w-4 sm:h-9' alt='share_button' />
                             
                         </div>
                     </div>
