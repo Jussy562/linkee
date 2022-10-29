@@ -17,7 +17,7 @@ function Profile() {
             
             <div className='hidden w-full md:w-auto  bg-none     md:block  ' id='navbar-default'>
                     <div className='w-full flex justify-center items-start'>
-                        <div className='  border border-dashed border-gray-300 bg-none rounded-full w-12 h-12   flex  justify-center items-center w-full'>
+                        <div className='  border border-dashed border-gray-300 bg-none rounded-full w-12 h-auto   flex  justify-center items-center w-full'>
                             <img src='/images/share.png' className=' w-4 sm:h-9' alt='share_button' />
                             
                         </div>
