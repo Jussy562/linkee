@@ -15,7 +15,7 @@ function App() {
         }
       </div>
 
-      <div className='socials flex gap-4 justify-center md:px-20 md:py-8'>
+      <div className='socials flex gap-8 justify-center md:px-20 py-8'>
         <a href='https://slack.com'>
           <img src='/images/slack.png' alt='slack' className='w-7 h-7' />
         </a>
