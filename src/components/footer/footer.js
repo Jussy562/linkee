@@ -4,12 +4,12 @@ function Footer() {
   return (
     <div className='w-full md:px-20 md:py-8 md:pb-4 px-6 py-4'>
         <hr />
-        <div className='flex justify-between items-center'>
-            <img src="/images/zuriInternship.png" alt='zuri internshinp' className='w-160 h-200' />
+        <div className='flex flex-col gap-8 md:flex-row md:justify-between md:items-center py-10'>
+            <img src="/images/zuri.Internship_Logo.png" alt='zuri internshinp' className='w-20 sm:h-auto' />
             <div className='flex'>
-              <h3>HNG Internship 9 Frontend Task</h3>
+              <h3 className='font-inter text-gray-300'>HNG Internship 9 Frontend Task</h3>
             </div>
-            <img src="/images/ingressive.png" alt='Ingressive for good' />
+            <img src="/images/I4G.png" alt='Ingressive for good' className='w-20 h-auto' />
         </div>
     </div>
   )
