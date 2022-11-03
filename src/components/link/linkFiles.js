@@ -38,6 +38,12 @@ export const linkData = [
         url: "https://books.zuri.team/design-rules",
     },
 
+    {
+        id: "contact",
+        name: "Contact",
+        url: "../../pages/contact",
+    },
+
 ];
 
 export default linkData;
