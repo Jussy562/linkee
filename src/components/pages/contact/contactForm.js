@@ -55,7 +55,7 @@ function ContactForm() {
         }
 
         if (values.message < 1) {
-            errors.message ="Please enter your message!"
+            errors.message ="Please enter a message!"
         }
 
         return errors;
@@ -66,7 +66,7 @@ function ContactForm() {
     //flex flex-col justify-center items-center
   return (
     <div className='flex md:justify-center items-center'>
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+        
         <form class="bg-white w-full md:w-2/3  rounded "
         onSubmit={handleSubmit}
         >
@@ -153,9 +153,11 @@ function ContactForm() {
                 <button class="w-full bg-blue-400 text-white text-lg font-bold py-4 text-center rounded-lg hover:bg-blue-300 focus:outline-none focus:shadow-outline" >
                     Send a message
                 </button>
+                {Object.keys(formErrors).length === 0 && isSubmit ? (<div className='p-10 text-green-500 text-center mt:6'>Message sent!</div>) : " "}
                     
                 
         </form>
+        
     </div>
     
 
