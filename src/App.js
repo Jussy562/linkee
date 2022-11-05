@@ -1,31 +1,27 @@
 import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Footer from './components/footer/footer';
-import  { linkData } from './components/link/linkFiles';
-import Links from './components/link/links';
-import Profile from './components/profile/profile';
+import Contact from './components/pages/contact/contact';
+import Home from './components/pages/home/home';
+// import Home from './components/pages/home/home';
+
 function App() {
   return (
     <div className="bg-white h-screen w-full">
-      <div className="md:px-20 md:py-8 md:pb-4 px-6 py-4">
-        <Profile />
-        {
-          linkData.map((item) => (
-            <Links key={item.id} item={item} />
-          ))
-        }
-      </div>
+      <Router>
+        <Routes>
+      {/*  */}
+      {/*  */}
+          <Route path='/' element={<Home />} />
+          <Route path='/contact' element={<Contact />} />
 
-      <div className='socials flex gap-8 justify-center md:px-20 py-8'>
-        <a href='https://slack.com'>
-          <img src='/images/slack.png' alt='slack' className='w-7 h-7' />
-        </a>
-        
-        <a href='https://github.com/jussy562'>
-          <img  src='/images/github.png' alt='slack' className='w-7 h-7'  />
-        </a>
-        
-      </div>
-      <Footer />
+          
+        </Routes>
+        <Footer />
+      </Router>
+      
+      
+      
     </div>
   );
 }
