@@ -1,11 +1,75 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 
 function ContactForm() {
+    const initialValues = {
+        firstname: " ", 
+        lastname: " ",
+        email: " ",
+        message: " ",
+    };
+
+    const [formValues, setFormValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    const handleChange = (e) => {
+        
+        const {name, value} = e.target;
+        setFormValues({...formValues, [name]: value});
+        
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(formValues));
+        setIsSubmit(true);
+        
+    };
+
+    useEffect(
+        ()=>{
+            console.log(formErrors);
+            if(Object.keys(formErrors).length === 0 && isSubmit){
+                console.log(formErrors);
+            }
+        }, [formErrors, isSubmit] 
+        ); 
+
+    const validate = (values) => {
+        const errors = {};
+        const regex= /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (values.firstname < 1){
+            errors.firstname = "Firstname is required!";
+        }
+
+        if (values.lastname < 1){
+            errors.lastname = "Lastname is required!";
+
+        }
+
+        if(values.email < 1) {
+            errors.email = "Email is required!";
+        }
+         else if (!regex.test(values.email)){
+            errors.email = "Enter a Valid email!";
+        }
+
+        if (values.message < 1) {
+            errors.message ="Please enter your message!"
+        }
+
+        return errors;
+
+    };
+
     //px-8 pt-6 pb-8 mb-4
     //flex flex-col justify-center items-center
   return (
     <div className='flex md:justify-center items-center'>
-        <form class="bg-white w-full md:w-2/3  rounded ">
+        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+        <form class="bg-white w-full md:w-2/3  rounded "
+        onSubmit={handleSubmit}
+        >
                 <div className='flex flex-col w-full '>
                     <h1 className='text-4xl font-bold text-gray-900 mb-6'>
                         Contact Me
@@ -17,15 +81,30 @@ function ContactForm() {
                         <label class="block text-gray-800 text-lg font-inter mb-2" for="firstname">
                             First name
                         </label>
-                        <input class=" appearance-none border rounded w-full py-2 px-3 text-xl text-gray-700  focus:outline-blue-200 focus:shadow-outline " id="firstname" type="text" placeholder="Enter your first name" />
+                        <input class=" appearance-none border rounded w-full py-2 px-3 
+                        text-xl text-gray-700  focus:outline-blue-200 focus:shadow-outline " 
+                        id="firstname" type="text" placeholder="Enter your first name"
+                        name='firstname' 
+                        value={formValues.firstname}
+                        onChange={handleChange} 
+                        />
+                        <p className='text-sm text-red-400'>{formErrors.firstname}</p>
                     </div>
+                    
                     <div class="w-full md:w-1/2">
                         <label class="block text-gray-800 text-lg font-inter mb-2" for="lastname">
                             Last name
                         </label>
-                        <input class=" appearance-none border  rounded w-full py-2 px-3 text-xl text-gray-700 mb-3 focus:outline-blue-200 focus:shadow-outline" id="lastname" type="text" placeholder="Enter your last name" />
-                        
+                        <input class=" appearance-none border  rounded w-full py-2 px-3 
+                        text-xl text-gray-700 mb-3 focus:outline-blue-200 focus:shadow-outline" 
+                        id="lastname" type="text" placeholder="Enter your last name" 
+                        name='lastname'
+                        value={formValues.lastname}
+                        onChange={handleChange} 
+                        />
+                        <p className='text-sm text-red-400'>{formErrors.lastname}</p>
                     </div>
+                    
                 </div>
 
                 
@@ -33,7 +112,14 @@ function ContactForm() {
                     <label class="block text-gray-800 text-lg font-inter mb-2" for="email">
                             Email
                     </label>
-                    <input class=" appearance-none border rounded w-full py-2 px-3 text-xl text-gray-700 leading-tight focus:outline-blue-200 focus:shadow-outline" id="email" type="email" placeholder="yourname@email.com" />
+                    <input class=" appearance-none border rounded w-full py-2 px-3 text-xl 
+                    text-gray-700 leading-tight focus:outline-blue-200 focus:shadow-outline" 
+                    id="email" type="email" placeholder="yourname@email.com" 
+                    name='email'
+                    value={formValues.email}
+                    onChange={handleChange}  
+                    />
+                    <p className='text-sm text-red-400'>{formErrors.email}</p>
                 </div>
 
                 
@@ -43,7 +129,14 @@ function ContactForm() {
                     <label class="block text-gray-800 text-lg font-inter mb-2" for="message">
                         Message
                     </label>
-                    <textarea rows={6} class="rounded-lg appearance-none border rounded w-full py-2 px-3 text-xl text-gray-700 leading-tight focus:outline-blue-200 focus:shadow-outline" id="message" type="textarea" placeholder="Send me a message and I will respond as soon as possible..." />
+                    <textarea rows={6} class="rounded-lg appearance-none border rounded w-full py-2 px-3 text-xl text-gray-700 
+                    leading-tight focus:outline-blue-200 focus:shadow-outline" 
+                    id="message" type="textarea" placeholder="Send me a message and I will respond as soon as possible..." 
+                    name='message'
+                    value={formValues.message}
+                    onChange={handleChange} 
+                    />
+                    <p className='text-sm text-red-400'>{formErrors.message}</p>
                 </div>
                 
 
@@ -57,7 +150,7 @@ function ContactForm() {
                     </label>
                 </div>
                 
-                <button class="w-full bg-blue-400 text-white text-lg font-bold py-4 text-center rounded-lg hover:bg-blue-300 focus:outline-none focus:shadow-outline" type="button">
+                <button class="w-full bg-blue-400 text-white text-lg font-bold py-4 text-center rounded-lg hover:bg-blue-300 focus:outline-none focus:shadow-outline" >
                     Send a message
                 </button>
                     
