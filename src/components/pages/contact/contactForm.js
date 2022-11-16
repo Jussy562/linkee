@@ -6,11 +6,15 @@ function ContactForm() {
         lastname: " ",
         email: " ",
         message: " ",
+        
     };
 
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
+    const checkError = 'Accept before you continue';
 
     const handleChange = (e) => {
         
@@ -19,9 +23,20 @@ function ContactForm() {
         
     };
 
+    const handleCheck = (e) => {
+        if (e.target.checked) {
+            setIsChecked(current => !current);
+        }
+    }
+
+   
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        if (isChecked) {
+            setIsCheck(true);
+        };
         setIsSubmit(true);
         
     };
@@ -57,6 +72,8 @@ function ContactForm() {
         if (values.message < 1) {
             errors.message ="Please enter a message!"
         }
+
+      
 
         return errors;
 
@@ -143,11 +160,16 @@ function ContactForm() {
                 <div class=" w-full md:flex md:items-center mb-6">
                     
                     <label class="w-full flex items-center text-gray-500 font-small">
-                        <input className="border rounded-lg mr-2 w-6 h-6  hover:border hover:border-blue-200" type="checkbox" />
+                        <input className="border rounded-lg mr-2 w-6 h-6  hover:border hover:border-blue-200" type="checkbox" 
+                       
+                        onChange={handleCheck}
+                        />
                         <span class="text-l md:text-xl">
                             You agree to providing your data to LeBeela Who may contact you.
                         </span>
                     </label>
+                    {isCheck ? (<p className='text-sm text-red-400'>{checkError}</p>) : " "}
+                    
                 </div>
                 
                 <button class="w-full bg-blue-400 text-white text-lg font-bold py-4 text-center rounded-lg hover:bg-blue-300 focus:outline-none focus:shadow-outline" >

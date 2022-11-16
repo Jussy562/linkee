@@ -10,8 +10,7 @@ function App() {
     <div className="bg-white h-screen w-full">
       <Router>
         <Routes>
-      {/*  */}
-      {/*  */}
+      
           <Route path='/' element={<Home />} />
           <Route path='/contact' element={<Contact />} />
 
